@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 2020_04_21_204240) do
   end
 
   create_table "journal_entries", force: :cascade do |t|
-    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.string "entry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id_id"], name: "index_journal_entries_on_user_id_id"
+    t.index ["user_id"], name: "index_journal_entries_on_user_id"
   end
 
   create_table "journal_tags", force: :cascade do |t|
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2020_04_21_204240) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id_id"], name: "index_tags_on_user_id_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
