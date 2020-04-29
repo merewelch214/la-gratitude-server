@@ -9,6 +9,11 @@ class JournalEntriesController < ApplicationController
         end
     end
 
+    def today_journal_entry 
+        journal_entry = JournalEntry.find(:created_at => Date.today)
+        render json: journal_entry
+    end
+
     private
     def journal_entry_params
         params.require(:journal_entry).permit(:user_id, :entry)

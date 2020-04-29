@@ -16,17 +16,21 @@ ActiveRecord::Schema.define(version: 2020_04_21_204240) do
   enable_extension "plpgsql"
 
   create_table "feelings", force: :cascade do |t|
+    t.bigint "user_id"
     t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_feelings_on_user_id"
   end
 
   create_table "goals", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "title"
     t.string "description"
     t.datetime "completed_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "journal_entries", force: :cascade do |t|
