@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   patch '/journal_entry/:id', to: 'journal_entries#edit'
   delete '/journal_entry/:id', to: 'journal_entries#destroy'
 
+  post '/feeling', to: 'feelings#create'
+
 end
