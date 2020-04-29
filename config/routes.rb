@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   get '/today_journal_entry', to: 'journal_entries#today_journal_entry'
   post '/journal_entry', to: 'journal_entries#create'
+  patch '/journal_entry/:id', to: 'journal_entries#edit'
+  delete '/journal_entry/:id', to: 'journal_entries#destroy'
+
 end
