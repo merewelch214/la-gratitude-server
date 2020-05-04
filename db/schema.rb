@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(version: 2020_05_04_174509) do
   end
 
   create_table "wins", force: :cascade do |t|
-    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id_id"], name: "index_wins_on_user_id_id"
+    t.index ["user_id"], name: "index_wins_on_user_id"
   end
 
 end
