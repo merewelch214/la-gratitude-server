@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   patch '/journal_entry/:id', to: 'journal_entries#edit'
   delete '/journal_entry/:id', to: 'journal_entries#destroy'
 
-  post '/feeling', to: 'feelings#create'
   get '/feeling', to: 'feelings#show'
+  post '/feeling', to: 'feelings#create'
+
+  get '/goals', to: 'goals#index'
+  post '/goal', to: 'goals#create'
+  delete '/goal/:id', to: 'goals#destroy'
 
 end
