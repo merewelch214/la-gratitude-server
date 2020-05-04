@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   post '/goal', to: 'goals#create'
   delete '/goal/:id', to: 'goals#destroy'
 
+  get '/wins', to: 'wins#index'
+  post '/win', to: 'wins#create'
+  delete '/win/:id', to: 'wins#destroy'
+
 end
