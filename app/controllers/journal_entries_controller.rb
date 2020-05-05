@@ -28,6 +28,11 @@ class JournalEntriesController < ApplicationController
         JournalEntry.find(params[:id]).destroy
     end
 
+    def get_journal_dates 
+        dates = JournalEntry.where(:user_id => params[:user_id]).pluck(:created_at)
+        render json: dates
+    end
+
     private
     def journal_entry_params
         params.require(:journal_entry).permit(:user_id, :entry)
