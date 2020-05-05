@@ -29,7 +29,7 @@ class JournalEntriesController < ApplicationController
     end
 
     def get_journal_dates 
-        dates = JournalEntry.where(:user_id => params[:user_id]).pluck(:created_at)
+        dates = JournalEntry.where(:user_id => params[:user_id]).pluck(:created_at, :id)
         render json: dates
     end
 
