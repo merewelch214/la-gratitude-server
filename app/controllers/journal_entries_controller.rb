@@ -14,13 +14,13 @@ class JournalEntriesController < ApplicationController
             journal_entry = JournalEntry.find_by('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
             render json: journal_entry
         else
-            render json: {entry: '', id: ''}
+            render json: {entry: '', id: '', score: '', comparative: ''}
         end
     end
 
     def edit
         journal_entry = JournalEntry.find(params[:id])
-        journal_entry.update(entry: params[:entry])
+        journal_entry.update(entry: params[:entry], score: params[:score])
         render json: journal_entry
     end
 
@@ -29,13 +29,14 @@ class JournalEntriesController < ApplicationController
     end
 
     def get_journal_dates 
-        dates = JournalEntry.where(:user_id => params[:id]).pluck(:created_at, :id)
+        dates = JournalEntry.where(:user_id => params[:id]).pluck(:created_at)
+        #.map{|date| date.strftime("%a %b %d %Y")}
         render json: dates
     end
 
     private
     def journal_entry_params
-        params.require(:journal_entry).permit(:user_id, :entry)
+        params.require(:journal_entry).permit(:user_id, :entry, :score, :comparative, :positive, :negative)
     end
 
 end
