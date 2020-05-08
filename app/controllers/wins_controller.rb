@@ -1,7 +1,7 @@
 class WinsController < ApplicationController
 
     def index 
-        wins = Win.where(user_id: 1)
+        wins = Win.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
         render json: wins
     end
 

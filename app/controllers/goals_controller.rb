@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
 
     def index 
-        goals = Goal.where(user_id: 1)
+        goals = Goal.where('created_at BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
         render json: goals
     end
 
