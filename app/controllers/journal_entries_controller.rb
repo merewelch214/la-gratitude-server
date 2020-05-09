@@ -34,6 +34,11 @@ class JournalEntriesController < ApplicationController
         render json: dates
     end
 
+    def journal_entry_score_dates
+        journal_entries = JournalEntry.where(user_id: 1).pluck(:created_at, :comparative)
+        render json: journal_entries
+    end
+
     private
     def journal_entry_params
         params.require(:journal_entry).permit(:user_id, :entry, :score, :comparative, :positive, :negative)
