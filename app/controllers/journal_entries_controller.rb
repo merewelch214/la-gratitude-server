@@ -35,7 +35,7 @@ class JournalEntriesController < ApplicationController
     end
 
     def journal_entry_score_dates
-        journal_entries = JournalEntry.where(user_id: 1).pluck(:created_at, :comparative)
+        journal_entries = JournalEntry.order(:created_at).where(user_id: 1).pluck(:created_at, :comparative)
         render json: journal_entries
     end
 
