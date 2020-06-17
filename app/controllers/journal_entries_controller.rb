@@ -39,6 +39,13 @@ class JournalEntriesController < ApplicationController
         render json: journal_entries
     end
 
+    # to do: make this sorted
+    def index
+        journal_entries = JournalEntry.order(:created_at).where(user_id: 1)
+        render json: journal_entries
+    end
+
+
     private
     def journal_entry_params
         params.require(:journal_entry).permit(:user_id, :entry, :score, :comparative, :positive, :negative)
