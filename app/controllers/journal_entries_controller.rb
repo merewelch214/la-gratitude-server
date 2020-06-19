@@ -39,7 +39,7 @@ class JournalEntriesController < ApplicationController
         render json: journal_entries
     end
 
-    # to do: make this sorted
+    # to do: make this sorted and get only recent record
     def index
         journal_entries = JournalEntry.order(:created_at).where(user_id: 1)
         render json: journal_entries
