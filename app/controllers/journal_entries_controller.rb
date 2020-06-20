@@ -2,6 +2,7 @@ class JournalEntriesController < ApplicationController
 
     def create
         journal_entry = JournalEntry.new(journal_entry_params)
+        journal_entry.created_at.strftime('%Y-%m-%d')
         if journal_entry.save
             render json: journal_entry
         else
@@ -39,10 +40,15 @@ class JournalEntriesController < ApplicationController
         render json: journal_entries
     end
 
-    # to do: make this sorted and get only recent record
     def index
         journal_entries = JournalEntry.order(:created_at).where(user_id: 1)
         render json: journal_entries
+    end
+
+    def show
+        selected_date = Date.parse(params['date'])
+        entry = JournalEntry.where(user_id: 1, :created_at => selected_date.beginning_of_day..selected_date.end_of_day)
+        render json: entry
     end
 
 
