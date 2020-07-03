@@ -2,8 +2,8 @@ class JournalEntriesController < ApplicationController
 
     def create
         journal_entry = JournalEntry.new(journal_entry_params)
-        journal_entry.created_at.strftime('%Y-%m-%d')
         if journal_entry.save
+            # journal_entry.update(created_at: journal_entry.created_at.strftime('%Y-%m-%d'))
             render json: journal_entry
         else
             render json: {errors: journal_entry.errors.full_messages}

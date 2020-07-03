@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get '/get_journal_dates/:id', to: 'journal_entries#get_journal_dates'
   get '/journal_entry_score_dates/:id', to: 'journal_entries#journal_entry_score_dates'
   get '/journal_entries', to: 'journal_entries#index'
+  
   get '/user/:id/journal_date/:date', to: 'journal_entries#show'
+  # get '/user/:id/
 
   get '/feeling', to: 'feelings#show'
   post '/feeling', to: 'feelings#create'
